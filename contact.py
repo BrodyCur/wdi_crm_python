@@ -40,12 +40,13 @@ class Contact:
     print(cls.contacts[id - 1])
 
 
-  def update(self):
+  def update(self, attr, new_val):
     """ This method should allow you to specify
     1. which of the contact's attributes you want to update
     2. the new value for that attribute
-    and then make the appropriate change to the contact
-    """
+    and then make the appropriate change to the contact"""
+    setattr(self, attr, new_val)
+    return self
 
 
   @classmethod
@@ -98,6 +99,10 @@ kayla = Contact.create("Kayla", "Brissette", "kaylabrissette9@gmail.com", "loves
 
 # Contact.find_by('first_name', 'Brody')
 
-brody.delete()
+# brody.delete()
+
+Contact.all()
+
+kayla.update('note', 'Will flip the bitch')
 
 Contact.all()
