@@ -1,20 +1,28 @@
 class Contact:
 
+  contacts = []
+  next_id = 1
+
   def __init__(self, f_name, l_name, email, note):
     """This method should initialize the contact's attributes"""
     self.first_name = f_name
     self.last_name = l_name
     self.email = email
     self.note = note
+    self.id = Contact.next_id
+    Contact.next_id += 1
 
   def __str__(self):
     return f"{self.first_name}, {self.last_name}, {self.email}, {self.note}"
 
   @classmethod
-  def create(cls):
+  def create(cls, f_name, l_name, email, note):
     """This method should call the initializer,
-    store the newly created contact, and then return it
-    """
+    store the newly created contact, and then return it"""
+    contact = Contact(f_name, l_name, email, note)
+    cls.contacts.append(contact)
+    return contact
+
 
   @classmethod
   def all(cls):
@@ -59,6 +67,11 @@ class Contact:
 
   # Feel free to add other methods here, if you need them.
 
-brody = Contact("Brody", "Currie", "brodycurrie@gmail.com", "Builds Gunpla")
+brody = Contact.create("Brody", "Currie", "brodycurrie@gmail.com", "Builds Gunpla")
+jasmin = Contact.create("Jasmin", "Saromo", "JasminFace@gmail.com", "Also Builds Gunpla")
 
-print(brody)
+
+
+print(len(Contact.contacts))
+print(brody.id)
+print(jasmin.id)
