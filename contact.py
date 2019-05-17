@@ -13,7 +13,7 @@ class Contact:
     Contact.next_id += 1
 
   def __str__(self):
-    return f"{self.first_name}, {self.last_name}, {self.email}, {self.note}"
+    return f"Name: {self.first_name} {self.last_name} - Email: {self.email} - Info: {self.note}"
 
   @classmethod
   def create(cls, f_name, l_name, email, note):
@@ -27,12 +27,16 @@ class Contact:
   @classmethod
   def all(cls):
     """This method should return all of the existing contacts"""
+    for contact in cls.contacts:
+      print(f"{contact}")
 
   @classmethod
-  def find(cls):
+  def find(cls, id):
     """ This method should accept an id as an argument
-    and return the contact who has that id
-    """
+    and return the contact who has that id"""
+    print(cls.contacts[id - 1])
+
+
 
   def update(self):
     """ This method should allow you to specify
@@ -69,9 +73,14 @@ class Contact:
 
 brody = Contact.create("Brody", "Currie", "brodycurrie@gmail.com", "Builds Gunpla")
 jasmin = Contact.create("Jasmin", "Saromo", "JasminFace@gmail.com", "Also Builds Gunpla")
-
-
+cindy = Contact.create("Cindy", "Chea", "cindychea@gmail.com", "Dancer")
+kayla = Contact.create("Kayla", "Brissette", "kaylabrissette9@gmail.com", "loves dogs")
 
 print(len(Contact.contacts))
 print(brody.id)
 print(jasmin.id)
+print(cindy.id)
+print(kayla.id)
+Contact.all()
+
+Contact.find(1)
