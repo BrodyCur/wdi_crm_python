@@ -1,8 +1,14 @@
 class Contact:
 
-  def __init__(self):
+  def __init__(self, f_name, l_name, email, note):
     """This method should initialize the contact's attributes"""
+    self.first_name = f_name
+    self.last_name = l_name
+    self.email = email
+    self.note = note
 
+  def __str__(self):
+    return f"{self.first_name}, {self.last_name}, {self.email}, {self.note}"
 
   @classmethod
   def create(cls):
@@ -53,3 +59,6 @@ class Contact:
 
   # Feel free to add other methods here, if you need them.
 
+brody = Contact("Brody", "Currie", "brodycurrie@gmail.com", "Builds Gunpla")
+
+print(brody)
