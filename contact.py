@@ -30,14 +30,14 @@ class Contact:
   def all(cls):
     """This method should return all of the existing contacts"""
     for contact in cls.contacts:
-      print(f"{contact}")
+      print(contact)
 
 
   @classmethod
   def find(cls, id):
     """ This method should accept an id as an argument
     and return the contact who has that id"""
-    print(cls.contacts[id - 1])
+    return(cls.contacts[id - 1])
 
 
   def update(self, attr, new_val):
@@ -66,7 +66,7 @@ class Contact:
 
   def full_name(self):
     """Returns the full (first and last) name of the contact"""
-    print(f"Full Name: {self.first_name} {self.last_name}")
+    return(f"Full Name: {self.first_name} {self.last_name}")
 
 
   def delete(self):
@@ -101,8 +101,8 @@ kayla = Contact.create("Kayla", "Brissette", "kaylabrissette9@gmail.com", "loves
 
 # brody.delete()
 
-Contact.all()
+# Contact.all()
 
-kayla.update('note', 'Will flip the bitch')
+# kayla.update('note', 'Will flip the bitch')
 
-Contact.all()
+# Contact.all()
