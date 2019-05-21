@@ -48,7 +48,7 @@ class CRM:
     print('Enter a Note: ')
     note = input()
 
-    Contact.create(first_name, last_name, email, note)
+    Contact.create(first_name=first_name, last_name=last_name, email=email, note=note)
 
 
   def modify_existing_contact(self):

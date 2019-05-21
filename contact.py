@@ -19,10 +19,10 @@ class Contact(Model):
 db.connect()
 db.create_tables([Contact])
 
-# brody = Contact.create("Brody", "Currie", "brodycurrie@gmail.com", "Builds Gunpla")
-# jasmin = Contact.create("Jasmin", "Saromo", "JasminFace@gmail.com", "Also Builds Gunpla")
-# cindy = Contact.create("Cindy", "Chea", "cindychea@gmail.com", "Dancer")
-# kayla = Contact.create("Kayla", "Brissette", "kaylabrissette9@gmail.com", "loves dogs")
+brody = Contact.create(first_name="Brody", last_name="Currie", email="brodycurrie@gmail.com", note="Builds Gunpla")
+jasmin = Contact.create(first_name="Jasmin", last_name="Saromo", email="JasminFace@gmail.com", note="Also Builds Gunpla")
+cindy = Contact.create(first_name="Cindy", last_name="Chea", email="cindychea@gmail.com", note="Dancer")
+kayla = Contact.create(first_name="Kayla", last_name="Brissette", email="kaylabrissette9@gmail.com", note="loves dogs")
 
 # print(len(Contact.contacts))
 # print(brody.id)
