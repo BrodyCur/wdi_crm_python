@@ -54,6 +54,7 @@ class CRM:
   def modify_existing_contact(self):
     print('Enter the id of the contact you would like to modify: ')
     contact_id = int(input())
+    contact = Contact.get(id=contact_id)
 
     print("Would you like to modify, 'first_name', 'last_name', 'email', or 'note': ")
     attr = input()
@@ -61,21 +62,22 @@ class CRM:
     print(f'Enter the new {attr}: ')
     new_val = input()
 
-    contact = Contact.find(contact_id)
+    contact.attr = new_val
 
-    contact.update(attr, new_val)
+    contact.save()
 
   
   def delete_contact(self):
     print('Enter the id of the contact you would like to delete: ')
     contact_id = int(input())
 
-    contact = Contact.find(contact_id)
+    contact = Contact.get(id=contact_id)
 
-    contact.delete()
+    contact.delete_instance()
 
   def display_all_contacts(self):
-    Contact.all()
+    for contact in Contact.select():
+      print(f"{contact.first_name} {contact.last_name}, email: {contact.email}, notes: {contact.note}")
 
 
   def search_by_attribute(self):
@@ -85,7 +87,20 @@ class CRM:
     print("Please enter the search term: ")
     search_term = input()
 
-    Contact.find_by(attribute, search_term)
+    found_contact = None
+    if attribute == 'first_name':
+      found_contact = Contact.select().where(Contact.first_name == search_term)
+    elif attribute == 'last_name':
+      found_contact = Contact.select().where(Contact.last_name == search_term)
+    elif attribute == 'email':
+      found_contact = Contact.select().where(Contact.email == search_term)
+    elif attribute == 'note':
+      found_contact = Contact.select().where(Contact.note == search_term)
+    elif attribute == 'id':
+      found_contact = Contact.select().where(Contact.id == search_term)
+    for contact in found_contact:
+      print(f"{contact.first_name} {contact.last_name}, email: {contact.email}, notes: {contact.note}")
+
 
 crm_app = CRM()
 crm_app.main_menu()
