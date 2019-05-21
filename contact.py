@@ -8,6 +8,9 @@ class Contact(Model):
   email = CharField()
   note = TextField()
 
+  class Meta:
+    database = db
+
   def full_name(self):
     """Returns the full (first and last) name of the contact"""
     return(f"Full Name: {self.first_name} {self.last_name}")
