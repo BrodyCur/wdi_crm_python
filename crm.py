@@ -62,10 +62,10 @@ class CRM:
     print(f'Enter the new {attr}: ')
     new_val = input()
 
-    contact.attr = new_val
-
+    setattr(contact, attr, new_val)
     contact.save()
 
+    return contact
   
   def delete_contact(self):
     print('Enter the id of the contact you would like to delete: ')
